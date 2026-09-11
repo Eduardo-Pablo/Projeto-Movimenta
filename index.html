@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mobiliza — Mobilidade urbana colaborativa</title>
+    <meta name="description" content="Plataforma colaborativa para identificação e priorização de problemas de mobilidade urbana.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            <span>●</span> MOBILIZA
+        </div>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#problemas">Problemas</a>
+            <a href="#mapa">Mapa</a>
+            <a href="admin.html">Painel</a>
+        </nav>
+
+        <button class="btn-primary" onclick="abrirModal()">
+            + Registrar problema
+        </button>
+
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-text">
+
+                <span class="tag">
+                    MOBILIDADE URBANA
+                </span>
+
+                <h1>
+                    Mobilidade melhor começa
+                    com quem vive a cidade.
+                </h1>
+
+                <p>
+                    Identifique problemas de mobilidade
+                    e ajude a construir uma cidade mais
+                    acessível e conectada.
+                </p>
+
+                <button class="btn-primary"
+                        onclick="abrirModal()">
+                    Registrar um problema
+                </button>
+
+            </div>
+
+            <div class="hero-card">
+
+                <div class="mini-map">
+
+                    <div class="road road-1"></div>
+                    <div class="road road-2"></div>
+
+                    <div class="marker red">!</div>
+                    <div class="marker yellow">!</div>
+                    <div class="marker green">✓</div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ESTATÍSTICAS -->
+
+        <section class="stats" id="problemas">
+
+            <div class="stat">
+                <strong id="statTotal">0</strong>
+                <span>Problemas registrados</span>
+            </div>
+
+            <div class="stat">
+                <strong id="statCalcada">0</strong>
+                <span>Problemas de calçada</span>
+            </div>
+
+            <div class="stat">
+                <strong id="statOnibus">0</strong>
+                <span>Pontos de ônibus</span>
+            </div>
+
+            <div class="stat">
+                <strong id="statTravessia">0</strong>
+                <span>Travessias</span>
+            </div>
+
+        </section>
+
+
+        <!-- MAPA -->
+
+        <section class="map-section" id="mapa">
+
+            <div class="section-title">
+
+                <div>
+                    <span class="tag">MAPA</span>
+
+                    <h2>
+                        Problemas identificados
+                    </h2>
+                </div>
+
+                <select id="filtro" onchange="filtrarProblemas()">
+                    <option value="todos">Todos</option>
+                    <option value="calçada">Calçadas</option>
+                    <option value="onibus">Pontos de ônibus</option>
+                    <option value="travessia">Travessias</option>
+                </select>
+
+            </div>
+
+
+            <div class="map" id="map">
+
+                <!-- RUAS -->
+
+                <div class="street horizontal street-1"></div>
+                <div class="street horizontal street-2"></div>
+
+                <div class="street vertical street-3"></div>
+                <div class="street vertical street-4"></div>
+
+                <!-- os marcadores de problema são inseridos aqui pelo script.js -->
+
+            </div>
+
+            <div class="legend">
+
+                <span>
+                    <i class="dot red"></i>
+                    Alta prioridade
+                </span>
+
+                <span>
+                    <i class="dot yellow"></i>
+                    Média prioridade
+                </span>
+
+                <span>
+                    <i class="dot green"></i>
+                    Baixa prioridade
+                </span>
+
+            </div>
+
+        </section>
+
+        <footer>
+            <p>Mobiliza — protótipo desenvolvido para fins acadêmicos (UPX).</p>
+        </footer>
+
+    </main>
+
+
+    <!-- MODAL: REGISTRAR PROBLEMA -->
+
+    <div class="modal-overlay" id="modal">
+
+        <div class="modal">
+
+            <button class="close"
+                    onclick="fecharModal()">
+                ×
+            </button>
+
+            <h2>
+                Registrar problema
+            </h2>
+
+            <p>
+                Ajude a identificar um problema
+                de mobilidade na sua região.
+            </p>
+
+            <label>
+                Tipo de problema
+            </label>
+
+            <select id="tipoProblema">
+
+                <option value="">
+                    Selecione
+                </option>
+
+                <option value="calçada">
+                    Calçada
+                </option>
+
+                <option value="onibus">
+                    Ponto de ônibus
+                </option>
+
+                <option value="travessia">
+                    Travessia
+                </option>
+
+                <option value="acessibilidade">
+                    Acessibilidade
+                </option>
+
+            </select>
+
+
+            <label>
+                Local
+            </label>
+
+            <input
+                type="text"
+                id="localProblema"
+                placeholder="Ex.: Rua das Flores, 120"
+            >
+
+
+            <label>
+                Grau de dificuldade
+            </label>
+
+            <select id="grauProblema">
+                <option value="1">Baixo</option>
+                <option value="3" selected>Médio</option>
+                <option value="5">Alto</option>
+            </select>
+
+
+            <label>
+                Descrição
+            </label>
+
+            <textarea
+                id="descricaoProblema"
+                placeholder="Descreva o problema..."
+            ></textarea>
+
+
+            <button class="btn-primary"
+                    onclick="registrarProblema()">
+
+                Enviar problema
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- MODAL: DETALHE DO PROBLEMA -->
+
+    <div class="modal-overlay" id="modalDetalhe">
+
+        <div class="modal">
+
+            <button class="close" onclick="fecharDetalhe()">×</button>
+
+            <span class="tag" id="detalheTipo">TIPO</span>
+            <h2 id="detalheTitulo">Título do problema</h2>
+            <p id="detalheLocal" class="detalhe-local"></p>
+            <p id="detalheDescricao"></p>
+
+            <div class="detalhe-info">
+                <div>
+                    <strong id="detalheRelatos">0</strong>
+                    <span>relatos</span>
+                </div>
+                <div>
+                    <span class="badge" id="detalhePrioridade">Prioridade</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mobiliza — Painel administrativo</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            <span>●</span> MOBILIZA
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="index.html#mapa">Mapa</a>
+            <a href="admin.html" class="active">Painel</a>
+        </nav>
+
+    </header>
+
+
+    <main class="admin-main">
+
+        <div class="section-title">
+            <div>
+                <span class="tag">PAINEL ADMINISTRATIVO</span>
+                <h2>Visão geral dos problemas relatados</h2>
+            </div>
+        </div>
+
+        <section class="stats">
+
+            <div class="stat">
+                <strong id="statTotal">0</strong>
+                <span>Problemas registrados</span>
+            </div>
+
+            <div class="stat">
+                <strong id="statCalcada">0</strong>
+                <span>Problemas de calçada</span>
+            </div>
+
+            <div class="stat">
+                <strong id="statOnibus">0</strong>
+                <span>Pontos de ônibus</span>
+            </div>
+
+            <div class="stat">
+                <strong id="statTravessia">0</strong>
+                <span>Travessias</span>
+            </div>
+
+        </section>
+
+        <section class="admin-list-section">
+
+            <h2 class="admin-list-title">Problemas prioritários</h2>
+
+            <div id="listaPrioritarios" class="admin-list">
+                <!-- preenchido pelo script.js -->
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
