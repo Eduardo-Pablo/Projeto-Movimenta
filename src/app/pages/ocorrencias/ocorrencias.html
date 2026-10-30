@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Ocorrências registradas</h2>
+    <a routerLink="/cadastrar" class="btn btn-primary">
+      Nova ocorrência
+    </a>
+  </div>
+
+  <div *ngIf="ocorrencias.length === 0" class="alert alert-info">
+    Nenhuma ocorrência cadastrada ainda.
+  </div>
+
+  <div class="row g-3">
+    <div class="col-md-6" *ngFor="let ocorrencia of ocorrencias">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ ocorrencia.categoria }}</h5>
+
+          <p><strong>Local:</strong> {{ ocorrencia.local }}</p>
+          <p><strong>Descrição:</strong> {{ ocorrencia.descricao }}</p>
+          <div *ngIf="ocorrencia.foto" class="mb-3">
+          <img
+            [src]="ocorrencia.foto"
+            alt="Foto do problema"
+            class="img-fluid rounded"
+            style="max-height: 200px;">
+          </div>
+          <p><strong>Gravidade:</strong> {{ ocorrencia.gravidade }}</p>
+          <p>
+          <strong>Data:</strong>
+             {{ ocorrencia.data | date:'dd/MM/yyyy HH:mm' }}
+          </p>
+
+          <button
+            class="btn btn-danger btn-sm"
+            (click)="remover(ocorrencia.id)">
+            Remover
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

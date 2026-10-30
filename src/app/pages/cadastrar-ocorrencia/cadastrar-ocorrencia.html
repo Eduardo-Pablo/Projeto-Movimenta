@@ -1,0 +1,71 @@
+<div class="container">
+  <h2 class="mb-4">Registrar problema de mobilidade</h2>
+
+  <form (ngSubmit)="salvar()">
+
+    <div class="mb-3">
+      <label class="form-label">Local do problema</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="local"
+        name="local"
+        placeholder="Ex: Rua das Flores, 100"
+        required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Categoria</label>
+      <select
+        class="form-select"
+        [(ngModel)]="categoria"
+        name="categoria"
+        required>
+        <option value="">Selecione uma categoria</option>
+        <option value="Calçada danificada">Calçada danificada</option>
+        <option value="Falta de acessibilidade">Falta de acessibilidade</option>
+        <option value="Travessia perigosa">Travessia perigosa</option>
+        <option value="Ponto de ônibus inadequado">Ponto de ônibus inadequado</option>
+        <option value="Iluminação precária">Iluminação precária</option>
+        <option value="Obstáculos na via">Obstáculos na via</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Descrição</label>
+      <textarea
+        class="form-control"
+        rows="4"
+        [(ngModel)]="descricao"
+        name="descricao"
+        placeholder="Descreva o problema encontrado"
+        required></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Gravidade</label>
+      <select
+        class="form-select"
+        [(ngModel)]="gravidade"
+        name="gravidade">
+        <option value="Baixa">Baixa</option>
+        <option value="Média">Média</option>
+        <option value="Alta">Alta</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+  <label class="form-label">Foto do problema (opcional)</label>
+  <input
+    type="file"
+    class="form-control"
+    accept="image/*"
+    (change)="selecionarFoto($event)">
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      Registrar ocorrência
+    </button>
+
+  </form>
+</div>

@@ -1,0 +1,38 @@
+<div class="container">
+  <h2 class="mb-4">Indicadores de Mobilidade Urbana</h2>
+
+  <p class="text-muted mb-4">
+    Acompanhe os problemas de mobilidade registrados pela comunidade.
+  </p>
+
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card text-white bg-primary shadow">
+        <div class="card-body">
+          <h5>Total de ocorrências</h5>
+          <h1>{{ total }}</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-white bg-danger shadow">
+        <div class="card-body">
+          <h5>Gravidade alta</h5>
+          <h1>{{ alta }}</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-white bg-success shadow">
+        <div class="card-body">
+          <h5>Problemas de acessibilidade</h5>
+          <h1>{{ acessibilidade }}</h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
