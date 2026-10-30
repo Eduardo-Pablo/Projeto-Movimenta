@@ -52,6 +52,7 @@ npx serve .
 
 - Pablo Eduardo da Silva Armando
 - Raquel Helena Caetano Pinheiro
+- Matheus Lara Leite 
 
 ## Licença
 
